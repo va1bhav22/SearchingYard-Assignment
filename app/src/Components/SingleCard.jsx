@@ -16,13 +16,13 @@ const SingleCard = ({ original_title, poster_path, release_date,id }) => {
       transition={{ delay: 0.2, duration: 0.2 }}
     >
       <div className="DetailsContainer">
-      <Link style={{textDecoration:"none"}} to={`/moviedis/${id}`}>
+      <Link style={{textDecoration:"none",color:"gray"}} to={`/moviedis/${id}`}>
         <div className="imgContainer">
           <img className="imgPoster" src={getPosterUrl(poster_path)} alt="" />
         </div>
         <div className="DetailsText">
           <div className="PosterTitle">{original_title}</div>
-          <div>{release_date}</div>
+          <div style={{marginTop:"4px"}}>{release_date}</div>
         </div>
         </Link>
       </div>
