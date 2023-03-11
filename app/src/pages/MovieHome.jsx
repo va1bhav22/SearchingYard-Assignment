@@ -6,6 +6,7 @@ import SingleCard from "../Components/SingleCard";
 import { motion } from "framer-motion";
 import "../styles/SingleCard.css";
 import Footer from "./Footer";
+import Carousel from "../Components/Carousel ";
 const MovieHome = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
@@ -43,6 +44,9 @@ const MovieHome = () => {
             );
           })}
         </motion.div>
+      </div>
+      <div>
+      {/* <Carousel/> */}
       </div>
       <br />
       <Footer />
