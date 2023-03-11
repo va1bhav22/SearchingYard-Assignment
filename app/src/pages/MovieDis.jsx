@@ -19,10 +19,14 @@ console.log(currentMovie);
   const getPosterUrl = (poster_path) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.poster_path}`;
   };
+  const getBackPosterUrl = (backdrop_path) => {
+    return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.backdrop_path}`;
+  };
   return (
     <div>
     <div>{currentMovie?.overview}</div>
     <img src={getPosterUrl(currentMovie?.poster_path)} alt="" />
+    <img src={getBackPosterUrl(currentMovie?.backdrop_path)} alt="" />
     </div>
   )
 }

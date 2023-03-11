@@ -9,13 +9,14 @@ const SingleCard = ({ original_title, poster_path, release_date,id }) => {
   // console.log(item);
   return (
     <div>
-      <Link to={`/moviedis/${id}`}>
+      
       <motion.div
       className="CardContainer"
       whileHover={{scale:1.1}}
       transition={{ delay: 0.2, duration: 0.2 }}
     >
       <div className="DetailsContainer">
+      <Link style={{textDecoration:"none"}} to={`/moviedis/${id}`}>
         <div className="imgContainer">
           <img className="imgPoster" src={getPosterUrl(poster_path)} alt="" />
         </div>
@@ -23,8 +24,9 @@ const SingleCard = ({ original_title, poster_path, release_date,id }) => {
           <div className="PosterTitle">{original_title}</div>
           <div>{release_date}</div>
         </div>
+        </Link>
       </div>
-    </motion.div></Link>
+    </motion.div>
     </div>
   );
 };

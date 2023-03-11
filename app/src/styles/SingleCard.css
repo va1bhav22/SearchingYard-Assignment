@@ -12,8 +12,9 @@
 .CardContainer {
   /* background-color: aliceblue; */
   border-radius: 10px;
-  /* padding-bottom: 5px; */
+  padding-bottom: 5px;
   font-size: 14px;
+  height: 316px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -21,10 +22,11 @@
 .imgContainer {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .imgPoster {
   width: 160px;
+  margin-top: 10px;
 }
 .DetailsText {
   width: 70%;
