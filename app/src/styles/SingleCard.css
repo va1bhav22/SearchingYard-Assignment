@@ -1,0 +1,38 @@
+.MainHomeData {
+  /* width: 100%; */
+}
+.MainCradDiv {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5,19%);
+  grid-template-rows: auto;
+  gap: 16px;
+}
+.CardContainer {
+  /* background-color: aliceblue; */
+  border-radius: 10px;
+  /* padding-bottom: 5px; */
+  font-size: 14px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.imgPoster {
+  width: 160px;
+}
+.DetailsText {
+  width: 70%;
+  margin: 10px auto;
+
+  text-align: center;
+}
+
+.PosterTitle{
+    font-weight: bold;
+}

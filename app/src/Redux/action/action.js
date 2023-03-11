@@ -26,7 +26,7 @@ export const fetchDataFailure = error => {
 export const fetchData = () => {
   return (dispatch) => {
     dispatch(fetchDataRequest())
-    axios.get('https://good-red-crocodile-shoe.cyclic.app/assos')
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=1')
       .then(response => {
         const data = response.data
         dispatch(fetchDataSuccess(data))
