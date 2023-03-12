@@ -6,19 +6,21 @@ import SingleCard from "../Components/SingleCard";
 import { motion } from "framer-motion";
 import "../styles/SingleCard.css";
 import Footer from "./Footer";
-import Carousel from "../Components/Carousel ";
+import CarouselSlider from "../Components/Carousel ";
+import Searching from "../Components/Searching";
 const MovieHome = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
   // console.log(data);
 
   const d = data.data;
-  console.log(d);
+  // console.log(d);
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
   return (
     <div>
+      <Searching/>
       <div className="MainHomeData">
         <motion.div
           initial={{ y: -250 }}
@@ -46,7 +48,8 @@ const MovieHome = () => {
         </motion.div>
       </div>
       <div>
-      {/* <Carousel/> */}
+       
+      {/* <CarouselSlider/> */}
       </div>
       <br />
       <Footer />

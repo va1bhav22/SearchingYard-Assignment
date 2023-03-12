@@ -1,0 +1,36 @@
+/* Input  */
+input{
+    width: 300px;
+    margin: 2% 0 0 7%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 1.1rem;
+    padding-left: 3%;
+}
+button{
+    width: 8%;
+    height: 40px;
+    font-size: 1.1rem;
+    border-radius: 1.1rem;
+    cursor: pointer;
+    background-color: red;
+    margin-left: 10px;
+}
+
+.searching_div{
+    width: 300px;
+    margin: auto;
+    height: 20vh;
+    overflow: scroll;
+}
+.searching_div_contentDiv{
+    display: flex;
+}
+.searching_div_contentDiv > div > img {
+    width: 100%;
+    margin: 5px 0 0 0;
+    object-fit: cover;
+}
+.searching_div_contentDiv > div > p {
+   /* padding-bottom: 10px; */
+}

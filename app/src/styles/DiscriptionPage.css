@@ -25,7 +25,7 @@ z-index: -1;
 .DetailsContainerbg{
     width: 90%;
     margin: auto;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     display: flex;
     height: 100%;
     gap: 80px;

@@ -1,0 +1,15 @@
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star {
+    cursor: pointer;
+    font-size: 32px;
+    padding: 5px;
+    color: #ccc;
+  }
+  
+  .star.selected {
+    color: #ffcc00;
+  }
+  

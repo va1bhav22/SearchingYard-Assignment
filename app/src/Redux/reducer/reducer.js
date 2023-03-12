@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actionType/actionType.js';
+import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType.js';
 
 const initialState = {
   loading: false,
@@ -23,9 +23,29 @@ const dataReducer = (state = initialState, action) => {
     case FETCH_DATA_FAILURE:
       return {
         loading: false,
-        data: [],
+        // data: [],
         error:true
       }
+
+      case SEARCHING_DATA_REQUEST:
+        return {
+          ...state,
+          loading: true
+        }
+      case SEARCHING_DATA_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          search_data: action.payload,
+          error: false
+        }
+      case SEARCHING_DATA_FAILURE:
+        return {
+          ...state,
+          loading: false,
+          search_data: [],
+          error:true
+        } 
      
     default:
       return state
