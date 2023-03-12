@@ -20,7 +20,7 @@ const MovieHome = () => {
   }, [dispatch]);
   return (
     <div>
-      <Searching/>
+      {/* <Searching/> */}
       <div className="MainHomeData">
         <motion.div
           initial={{ y: -250 }}
