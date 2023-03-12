@@ -4,6 +4,7 @@ import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_D
 const initialState = {
   loading: false,
   data: [],
+  search_data:[],
   error:false
 }
 
@@ -43,7 +44,6 @@ const dataReducer = (state = initialState, action) => {
         return {
           ...state,
           loading: false,
-          search_data: [],
           error:true
         } 
      

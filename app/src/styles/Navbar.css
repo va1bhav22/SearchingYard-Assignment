@@ -7,7 +7,7 @@
 .navrBarContainer{
     width: 90%;
     margin: auto;
-   
+   gap: 100px;
     display: flex;
     height: 100%;
     align-items: center;
@@ -15,4 +15,14 @@
 .NavbarLogo{
 
     width: 100px;
+}
+
+.MainSearchInput{
+    outline: none;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    width: 400px;
+    font-size: 20px;
+    background-color: transparent;
 }

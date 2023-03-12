@@ -14,7 +14,7 @@ import Footer from "./Footer";
 
 const MovieDis = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
   const d = data.data;
