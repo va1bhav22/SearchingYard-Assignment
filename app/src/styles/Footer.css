@@ -37,3 +37,49 @@
     font-size: 18px;
 
 }
+
+
+@media screen and (max-width: 960px) {
+    .FooterMainContainer{
+        width: 100%;
+        height: fit-content;
+        background-color:#03243f;
+    }
+    
+    .LogoImg{
+        width: 127px;
+    }
+    
+    .Btn1{
+        background-color: white;
+        width: 130px;
+        border-radius: 5px;
+        padding: 10px;
+        color: #01c6ac;
+        border: none;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .FooterContainer{
+        display: grid;
+        width: 70%;
+        height: 100%;
+        margin: auto;
+        align-items: center;
+        color: white;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .FooterDiv{
+        line-height: 25px;
+    }
+    
+    .FooterDiv div{
+        margin-top: 10px;
+    }
+    .footerDivHead{
+        font-weight: bold;
+        font-size: 18px;
+    
+    }
+}

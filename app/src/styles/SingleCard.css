@@ -91,3 +91,102 @@ hr {
   border: 1px solid gray;
   border-radius: 50%;
 }
+
+
+@media screen and (max-width: 960px) {
+  .MainHomeData {
+  /* width: 100%; */
+}
+.MainCradDiv {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  grid-template-rows: auto;
+  gap: 19px;
+}
+.CardContainer {
+  /* background-color: aliceblue; */
+  border-radius: 10px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  height: 316px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 10px; */
+}
+.imgPoster {
+  width: 160px;
+  margin-top: 10px;
+}
+.DetailsText {
+  width: 70%;
+  margin: 10px auto;
+
+  text-align: center;
+}
+
+.PosterTitle {
+  font-weight: bold;
+  color: black;
+}
+
+hr {
+  width: 92%;
+  height: 1px;
+  font-weight: 800;
+  color: rgb(248, 243, 243);
+  /* background-color: aquamarine; */
+}
+
+.Title h1 {
+  margin-left: 49px;
+  margin-top: 20px;
+  color: gray;
+}
+
+/* pageButtons CSS */
+
+.PageNumber {
+  background: gray;
+  padding: 5px;
+  width:40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: bold;
+  color: aliceblue;
+  font-size: 22px;
+}
+
+.PageNumber:hover{
+  background-color: black;
+}
+
+.pagiantionButtons{
+  display: flex;
+  align-items: center;
+  /* margin-top: 30px; */
+  height: 100px;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.prevbtnicon{
+  color: gray;
+  font-size: 50px;
+  
+  border: 1px solid gray;
+  border-radius: 50%;
+}
+
+
+}
