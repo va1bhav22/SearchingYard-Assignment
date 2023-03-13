@@ -13,7 +13,7 @@ const Searching = () => {
   const [toggle,setToggle]=useState(false)
 
   const { search_data } = useSelector((store) => store.data);
-  console.log("search_data", search_data);
+  // console.log("search_data", search_data);
 
   const handleClickSearch = (e) => {
     e.preventDefault()
@@ -42,7 +42,7 @@ const Searching = () => {
       <div className="searching_div">
         {search_data?.results?.map((item) => {
           return (
-            <Link to={`/searchdis/${item.id}`} >
+            <Link style={{color:"black",textDecoration:"none"}} to={`/searchdis/${item.id}`} >
                <div className="searching_div_contentDiv" >
               <motion.div
                 whileHover={{ scale:1.03}}

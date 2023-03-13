@@ -1,0 +1,46 @@
+.image-carousal{
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+}
+.slider-container{
+    display: flex;
+    padding: 5px 10px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+.myCarousel{
+    max-width: 400px;
+    height: 320px;
+    
+    margin: 10px;
+    color: white;
+}
+.slider-container::-webkit-scrollbar {
+    display: none;
+  }
+.myCarousel img {
+    object-fit: contain;
+    border-radius: 17px;
+}
+
+.prev{
+    background-color: transparent;
+}
+
+.prevbtnicon{
+    color: gray;
+    font-size: 50px;
+    
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+.IconsScrollSlider{
+    display: flex;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    justify-content: space-between;
+    margin-top: 170px;
+}

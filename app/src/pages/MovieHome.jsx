@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../Redux/action/action";
+import { fetchData, resentMovieData } from "../Redux/action/action";
 import SingleCard from "../Components/SingleCard";
 import { motion } from "framer-motion";
 import "../styles/SingleCard.css";
 import Footer from "./Footer";
-import CarouselSlider from "../Components/Carousel ";
-import Searching from "../Components/Searching";
+import Slider from "../Components/Slider";
+
 const MovieHome = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
@@ -16,8 +16,12 @@ const MovieHome = () => {
   const d = data.data;
   // console.log(d);
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchData())
+    
   }, [dispatch]);
+    // useEffect(() => {
+    //   dispatch(resentMovieData());
+    // }, []);
   return (
     <div>
       {/* <Searching/> */}
@@ -28,7 +32,7 @@ const MovieHome = () => {
           transition={{ delay: 0.2, duration: 1 }}
           className="Title"
         >
-          <h1>Popular</h1>
+          <h1>Popular Movies</h1>
         </motion.div>
         <hr />
         <br />
@@ -48,8 +52,8 @@ const MovieHome = () => {
         </motion.div>
       </div>
       <div>
-       
-      {/* <CarouselSlider/> */}
+       <Slider/>
+     
       </div>
       <br />
       <Footer />

@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType.js';
+import { RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS,FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType.js';
 
 const initialState = {
   loading: false,
   data: [],
   search_data:[],
+  resentData:[],
   error:false
 }
 
@@ -34,6 +35,8 @@ const dataReducer = (state = initialState, action) => {
           loading: true
         }
       case SEARCHING_DATA_SUCCESS:
+        let data =[action.payload]
+        localStorage.setItem("search",JSON.stringify(data));
         return {
           ...state,
           loading: false,
@@ -46,6 +49,23 @@ const dataReducer = (state = initialState, action) => {
           loading: false,
           error:true
         } 
+        case RESENTMOVIE_DATA_REQUEST:
+          return {
+            ...state,
+            loading: true
+          }
+        case RESENTMOVIE_DATA_SUCCESS:
+          console.log(action.payload)
+          return {
+            loading: false,
+            resentData: action.payload,
+            error: false
+          }
+        case RESENTMOVIE_DATA_FAILURE:
+          return {
+            loading: false,
+            error:true
+          }
      
     default:
       return state

@@ -1,6 +1,6 @@
-import React from 'react'
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import StarRating from '../Components/StarRating';
 import Footer from './Footer';
 import { motion } from 'framer-motion';import "../styles/DiscriptionPage.css";
@@ -9,22 +9,30 @@ import { AiFillHeart, AiFillStar } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
-// import { seachingData } from '../Redux/action/action';
-const SearchingDis = () => {
-    const { id } = useParams();
+const SingleCarousel = () => {
+    const {id}=useParams()
     console.log(id);
-    const data = JSON.parse(localStorage.getItem("search"));
-    console.log(data);
+    const [data, setData] = useState([]);
+  const dataFetch = () => {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/now_playing?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=2"
+      )
+      .then((r) => setData(r.data))
+      .then((e) => console.log(e));
+  };
+  useEffect(() => {
+    dataFetch();
+  }, []);
 
-    const currentMovie = data[0]?.results?.find((item) => item.id == id);
-
-    const getPosterUrl = (poster_path) => {
-      return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.poster_path}`;
-    };
-    const getBackPosterUrl = (backdrop_path) => {
-      return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.backdrop_path}`;
-    };
-
+  const currentMovie = data?.results?.find((item) => item.id == id);
+//   console.log(currentMovie);
+  const getPosterUrl = (poster_path) => {
+    return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.poster_path}`;
+  };
+  const getBackPosterUrl = (backdrop_path) => {
+    return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.backdrop_path}`;
+  };
   return (
     <div>
     <div className="DisMainContainer">
@@ -69,6 +77,7 @@ const SearchingDis = () => {
                 whileHover={{ scale: 1.4 }}
                 transition={{ delay: 0.2, duration: 0.2 }}
                 className="FaPlay"
+                
               >
                 <AiFillHeart className="ReactIcons" />
               </motion.div>
@@ -124,4 +133,4 @@ const SearchingDis = () => {
   )
 }
 
-export default SearchingDis
+export default SingleCarousel

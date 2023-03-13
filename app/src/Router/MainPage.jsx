@@ -5,6 +5,7 @@ import MovieDis from '../pages/MovieDis'
 import NavBar from '../Components/NavBar'
 import Searching from '../Components/Searching'
 import SearchingDis from '../pages/SearchingDis'
+import SingleCarousel from '../pages/SingleCarousel'
 const MainPage = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const MainPage = () => {
         <Route path='/moviedis/:id' element={<MovieDis/>}/>
         <Route path='/search' element={<Searching/>}/>
         <Route path='/searchdis/:id' element={<SearchingDis/>}/>
+        <Route path='/carousel/:id' element={<SingleCarousel/>}/>
     </Routes>
     </>
   )

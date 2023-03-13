@@ -1,4 +1,4 @@
-import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType';
+import {RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType';
 import axios from 'axios';
 
 export const fetchDataRequest = () => {
@@ -42,6 +42,26 @@ export const fetchSearchFailure = error => {
   }
 }
 
+export const resentDataRequest = () => {
+  return {
+    type: RESENTMOVIE_DATA_REQUEST
+  }
+}
+
+export const resentDataSuccess = data => {
+  return {
+    type: RESENTMOVIE_DATA_SUCCESS,
+    payload: data
+  }
+}
+
+export const resentDataFailure = error => {
+  return {
+    type: RESENTMOVIE_DATA_FAILURE,
+    payload: error
+  }
+}
+
 
 
 export const fetchData = () => {
@@ -71,6 +91,21 @@ export const seachingData = (search) => {
       .catch(error => {
         const errorMsg = error.message
         dispatch(fetchSearchFailure(errorMsg))
+      })
+  }
+}
+
+export const resentMovieData = () => {
+  return (dispatch) => {
+    dispatch(resentDataRequest())
+    axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=1')
+      .then(response => {
+        const data = response.data
+        dispatch(resentDataSuccess(data))
+      })
+      .catch(error => {
+        const errorMsg = error.message
+        dispatch(resentDataFailure(errorMsg))
       })
   }
 }
