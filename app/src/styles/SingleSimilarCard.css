@@ -1,0 +1,17 @@
+.SimalarData{
+    display: flex;
+    width: 98%;
+    overflow: hidden;
+    gap: 10px;
+    margin-top:-16px;
+    
+    overflow-x: scroll;
+}
+.SimalarData::-webkit-scrollbar {
+    display: none;
+  }
+
+  .SinglePosterCoro img{
+    border-radius: 20px;
+    padding: 10px;
+  }

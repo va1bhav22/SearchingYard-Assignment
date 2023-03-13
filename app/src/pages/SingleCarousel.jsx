@@ -9,10 +9,12 @@ import { AiFillHeart, AiFillStar } from "react-icons/ai";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
+import SimilarSingleCard from '../Components/SimilarSingleCard';
 const SingleCarousel = () => {
     const {id}=useParams()
     console.log(id);
     const [data, setData] = useState([]);
+    const [Similar, setSimilar] = useState([]);
   const dataFetch = () => {
     axios
       .get(
@@ -21,9 +23,24 @@ const SingleCarousel = () => {
       .then((r) => setData(r.data))
       .then((e) => console.log(e));
   };
+
+
+  const similarData = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=1`
+      )
+      .then((r) => setSimilar(r.data))
+      .then((e) => console.log(e));
+  };
+
+
   useEffect(() => {
     dataFetch();
+    similarData()
   }, []);
+
+console.log("similarData",Similar);
 
   const currentMovie = data?.results?.find((item) => item.id == id);
 //   console.log(currentMovie);
@@ -125,6 +142,30 @@ const SingleCarousel = () => {
           </div>
         </motion.div>
       </div>
+    </div>
+    <div className='MainSimilarConatiner'>
+    <motion.div
+          initial={{ y: -250 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className="Title"
+          style={{
+            textAlign:"center",fontFamily:"Times New Roman"
+          }}
+        >
+          <h1 >Similar Movies</h1>
+        </motion.div>
+        <hr />
+        <br />
+    <div className="SimalarData">
+      {
+        Similar?.results?.map((ele)=>{
+          return<>
+           <SimilarSingleCard {...ele} />
+          </>
+        })
+      }
+    </div>
     </div>
     <div>
       <Footer/>
