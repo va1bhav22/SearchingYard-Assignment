@@ -1,18 +1,22 @@
-import React from 'react'
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react'
+import {useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from '../Components/StarRating';
 import Footer from './Footer';
 import { motion } from 'framer-motion';import "../styles/DiscriptionPage.css";
 import { ImList2 } from "react-icons/im";
 import { AiFillHeart, AiFillStar } from "react-icons/ai";
+// import { seachingData } from '../Redux/action/action';
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
-// import { seachingData } from '../Redux/action/action';
+import { similarData } from '../Redux/action/action';
+import SimilarSingleCard from '../Components/SimilarSingleCard';
 const SearchingDis = () => {
     const { id } = useParams();
-    console.log(id);
+    const dispatch = useDispatch();
+    // console.log(id);
+    const {simliar} = useSelector((state) => state.data);
     const data = JSON.parse(localStorage.getItem("search"));
     console.log(data);
 
@@ -24,6 +28,9 @@ const SearchingDis = () => {
     const getBackPosterUrl = (backdrop_path) => {
       return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.backdrop_path}`;
     };
+    useEffect(() => {
+      dispatch(similarData(id));
+    },[id, dispatch]);
 
   return (
     <div>
@@ -117,6 +124,31 @@ const SearchingDis = () => {
         </motion.div>
       </div>
     </div>
+    <div className="MainSimilarConatiner">
+      <motion.div
+          initial={{ y: -250 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className="Title"
+          style={{
+            textAlign:"center",fontFamily:"Times New Roman"
+          }}
+        >
+          <h1 >Similar Movies</h1>
+        </motion.div>
+        <hr />
+        <br />
+      <div className="SimalarData">
+        {/* similare type of miove */}
+      {
+        simliar?.results?.map((item) => {
+          return (
+            <SimilarSingleCard key={item.id}  {...item}/>
+          )
+        })
+      }
+      </div>
+      </div>
     <div>
       <Footer/>
     </div>

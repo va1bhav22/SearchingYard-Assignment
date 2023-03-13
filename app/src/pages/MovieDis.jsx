@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fetchData } from "../Redux/action/action";
+import { fetchData, similarData } from "../Redux/action/action";
 import "../styles/DiscriptionPage.css";
 import { ImList2 } from "react-icons/im";
 import { AiFillHeart, AiFillStar } from "react-icons/ai";
@@ -11,6 +11,7 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import StarRating from "../Components/StarRating";
 import Footer from "./Footer";
+import SimilarSingleCard from "../Components/SimilarSingleCard";
 
 const MovieDis = () => {
   const { id } = useParams();
@@ -24,6 +25,10 @@ const MovieDis = () => {
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(similarData(id));
+  },[id, dispatch]);
 
   const getPosterUrl = (poster_path) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${currentMovie?.poster_path}`;
@@ -122,6 +127,31 @@ const MovieDis = () => {
             </div>
           </motion.div>
         </div>
+      </div>
+      <div className="MainSimilarConatiner">
+      <motion.div
+          initial={{ y: -250 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className="Title"
+          style={{
+            textAlign:"center",fontFamily:"Times New Roman"
+          }}
+        >
+          <h1 >Similar Movies</h1>
+        </motion.div>
+        <hr />
+        <br />
+      <div className="SimalarData">
+        {/* similare type of miove */}
+      {
+        data?.simliar?.results?.map((item) => {
+          return (
+            <SimilarSingleCard key={item.id}  {...item}/>
+          )
+        })
+      }
+      </div>
       </div>
       <div>
         <Footer/>

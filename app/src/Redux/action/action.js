@@ -1,4 +1,4 @@
-import {RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE } from '../actionType/actionType';
+import {RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE, SIMILIARE_DATA_SUCCESS, SIMILIARE_DATA_FAILURE, SIMILIARE_DATA_REQUEST } from '../actionType/actionType';
 import axios from 'axios';
 
 export const fetchDataRequest = () => {
@@ -64,6 +64,30 @@ export const resentDataFailure = error => {
 
 
 
+
+export const similarDataRequest = () => {
+  return {
+    type: SIMILIARE_DATA_REQUEST
+  }
+}
+
+export const similarDataSuccess = data => {
+  return {
+    type: SIMILIARE_DATA_SUCCESS,
+    payload: data
+  }
+}
+
+export const similarDataFailure = error => {
+  return {
+    type: SIMILIARE_DATA_FAILURE,
+    payload: error
+  }
+}
+
+
+
+
 export const fetchData = () => {
   return (dispatch) => {
     dispatch(fetchDataRequest())
@@ -106,6 +130,22 @@ export const resentMovieData = () => {
       .catch(error => {
         const errorMsg = error.message
         dispatch(resentDataFailure(errorMsg))
+      })
+  }
+}
+
+
+export const similarData = (id) => {
+  return (dispatch) => {
+    dispatch(similarDataRequest())
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=1`)
+      .then(response => {
+        const data = response.data
+        dispatch(similarDataSuccess(data))
+      })
+      .catch(error => {
+        const errorMsg = error.message
+        dispatch(similarDataFailure(errorMsg))
       })
   }
 }

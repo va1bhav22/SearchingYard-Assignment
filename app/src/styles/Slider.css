@@ -1,7 +1,7 @@
 .image-carousal{
     position: relative;
     overflow: hidden;
-    margin: 20px;
+    margin: -20px 20px;
 }
 .slider-container{
     display: flex;
