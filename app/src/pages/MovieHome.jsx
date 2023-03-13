@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, resentMovieData } from "../Redux/action/action";
@@ -7,7 +7,9 @@ import { motion } from "framer-motion";
 import "../styles/SingleCard.css";
 import Footer from "./Footer";
 import Slider from "../Components/Slider";
-
+import { AiFillLeftCircle } from 'react-icons/ai';
+import { AiFillRightCircle } from 'react-icons/ai';
+import PosterData from "../Components/PosterData";
 const MovieHome = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
@@ -15,15 +17,30 @@ const MovieHome = () => {
 
   const d = data.data;
   // console.log(d);
+  const [page, setPage] = useState(1);
+
+  const handlePrevPage = () => {
+    setPage(page -1);
+  }
+
+  const handleNextPage = () => {
+    setPage(page +1);
+  }
   useEffect(() => {
-    dispatch(fetchData())
+    dispatch(fetchData(page))
     
-  }, [dispatch]);
-    // useEffect(() => {
-    //   dispatch(resentMovieData());
-    // }, []);
+  }, [dispatch,page]);
+
+
   return (
     <div>
+      <div>
+        <PosterData/>
+      </div>
+       <div>
+       <Slider/>
+     
+      </div>
       {/* <Searching/> */}
       <div className="MainHomeData">
         <motion.div
@@ -51,9 +68,11 @@ const MovieHome = () => {
           })}
         </motion.div>
       </div>
-      <div>
-       <Slider/>
-     
+      {/* Paganitaion */}
+      <div className="pagiantionButtons">
+       <div style={{backgroundColor:"none"}}> <AiFillLeftCircle className="prevbtnicon" onClick={handlePrevPage} disabled={page === 1}/></div>
+        <p  className="PageNumber">{page}</p>
+        <div><AiFillRightCircle className="prevbtnicon" onClick={handleNextPage}/></div>
       </div>
       <br />
       <Footer />

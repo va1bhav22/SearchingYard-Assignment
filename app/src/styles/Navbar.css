@@ -7,7 +7,7 @@
 .navrBarContainer{
     width: 90%;
     margin: auto;
-   gap: 100px;
+   gap: 200px;
     display: flex;
     height: 100%;
     align-items: center;

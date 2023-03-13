@@ -10,6 +10,7 @@ import {
   SEARCHING_DATA_SUCCESS,
   SEARCHING_DATA_FAILURE,
   SIMILIARE_DATA_SUCCESS,
+  BANNER_DATA_SUCCESS,
 } from "../actionType/actionType.js";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   search_data: [],
   resentData: [],
   simliar: [],
+  banner : [],
   error: false,
 };
 
@@ -83,6 +85,13 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         simliar: action.payload,
+      };
+
+      case BANNER_DATA_SUCCESS:
+      console.log("banner", action.payload);
+      return {
+        ...state,
+        banner: action.payload,
       };
 
     default:

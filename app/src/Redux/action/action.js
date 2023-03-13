@@ -1,4 +1,4 @@
-import {RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE, SIMILIARE_DATA_SUCCESS, SIMILIARE_DATA_FAILURE, SIMILIARE_DATA_REQUEST } from '../actionType/actionType';
+import {RESENTMOVIE_DATA_FAILURE,RESENTMOVIE_DATA_REQUEST,RESENTMOVIE_DATA_SUCCESS, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, SEARCHING_DATA_REQUEST, SEARCHING_DATA_SUCCESS, SEARCHING_DATA_FAILURE, SIMILIARE_DATA_SUCCESS, SIMILIARE_DATA_FAILURE, SIMILIARE_DATA_REQUEST,BANNER_DATA_FAILURE,BANNER_DATA_SUCCESS,BANNER_DATA_REQUEST } from '../actionType/actionType';
 import axios from 'axios';
 
 export const fetchDataRequest = () => {
@@ -87,11 +87,33 @@ export const similarDataFailure = error => {
 
 
 
+export const bannerDataRequest = () => {
+  return {
+    type: BANNER_DATA_REQUEST
+  }
+}
 
-export const fetchData = () => {
+export const bannerDataSuccess = data => {
+  return {
+    type: BANNER_DATA_SUCCESS,
+    payload: data
+  }
+}
+
+export const bannerDataFailure = error => {
+  return {
+    type: BANNER_DATA_FAILURE,
+    payload: error
+  }
+}
+
+
+
+
+export const fetchData = (page) => {
   return (dispatch) => {
     dispatch(fetchDataRequest())
-    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=1')
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US&page=${page}`)
       .then(response => {
         const data = response.data
         dispatch(fetchDataSuccess(data))
@@ -146,6 +168,22 @@ export const similarData = (id) => {
       .catch(error => {
         const errorMsg = error.message
         dispatch(similarDataFailure(errorMsg))
+      })
+  }
+}
+
+
+export const bannerData = () => {
+  return (dispatch) => {
+    dispatch(bannerDataRequest())
+    axios.get("https://api.themoviedb.org/3/movie/latest?api_key=a8fd72cec737865b11d1fec97071918a&language=en-US")
+      .then(response => {
+        const data = response.data
+        dispatch(bannerDataSuccess(data))
+      })
+      .catch(error => {
+        const errorMsg = error.message
+        dispatch(bannerDataFailure(errorMsg))
       })
   }
 }
